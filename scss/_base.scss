@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #707070;
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+}
+
+.page {
+	min-height: 100vh;
+	background: #f2f2f2;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	max-width: 1200px;
+	width: 100%;
+	min-height: 100vh;
+	margin: 0 auto;
+}
+
+.half {
+	flex: 1 1 calc((100% / 2) - 40px);
+}
+
+.chx {
+	margin: 0;
+}
+
+.btn {
+	padding: 0;
+	color: inherit;
+	font-size: inherit;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+.active {
+	visibility: visible;
+	opacity: 1;
+}
