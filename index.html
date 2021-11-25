@@ -5,30 +5,50 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="./css/style.min.css" rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
 		<title>TodoList</title>
 	</head>
 	<body>
 		<div class="page">
-			<div class="todoList">
-				<div class="todoList__header">
-					<h3 class="todoList__caption">Todo list</h3>
-					<button class="btn todoList__btn">Add</button>
+			<div class="container">
+				<div class="todoList half">
+					<div class="todoList__header">
+						<h2 class="todoList__caption">Список задач</h2>
+						<button class="btn todoList__btn">Добавить</button>
+					</div>
+
+					<div class="todoList__body">
+						<ul class="list">
+							<li class="list__item todo">
+								<div class="box">
+									<input class="chx todo__chx box__item" type="checkbox" />
+									<img
+										class="todo__priority box__item"
+										src="./assets/icons/priority-icon.png"
+									/>
+									<span class="todo__title box__item">Задача 1</span>
+								</div>
+								<div class="box">
+									<button class="btn todo__btn box__item">
+										<img src="./assets/icons/edit-icon.png" />
+									</button>
+									<button class="btn todo__btn box__item">
+										<img src="./assets/icons/delete-icon.png" />
+									</button>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
 
-				<div class="todoList__body">
-					<ul class="list">
-						<li class="list__item item">
-							<div class="container">
-								<input class="item__chx" type="checkbox" />
-								<span class="item__priority"></span>
-								<span class="item__title"></span>
-							</div>
-							<div class="container">
-								<button></button>
-								<button></button>
-							</div>
-						</li>
-					</ul>
+				<div class="half form-wrapper">
+					<div class="form__header"></div>
+					<div class="form__body"></div>
+					<div class="form__footer"></div>
 				</div>
 			</div>
 		</div>
