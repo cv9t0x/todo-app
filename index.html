@@ -18,39 +18,55 @@
 				<div class="todoList half">
 					<div class="todoList__header">
 						<h2 class="todoList__caption">Список задач</h2>
-						<button class="btn todoList__btn">Добавить</button>
+						<button class="btn todoList__btn todoList__btn--add">
+							Добавить
+						</button>
 					</div>
 
 					<div class="todoList__body">
-						<ul class="list">
-							<li class="list__item todo">
-								<div class="box">
-									<input class="chx todo__chx box__item" type="checkbox" />
-									<img
-										class="todo__priority box__item"
-										src="./assets/icons/priority-icon.png"
-									/>
-									<span class="todo__title box__item">Задача 1</span>
-								</div>
-								<div class="box">
-									<button class="btn todo__btn box__item">
-										<img src="./assets/icons/edit-icon.png" />
-									</button>
-									<button class="btn todo__btn box__item">
-										<img src="./assets/icons/delete-icon.png" />
-									</button>
-								</div>
-							</li>
-						</ul>
+						<ul class="list"></ul>
 					</div>
 				</div>
 
-				<div class="half form-wrapper">
-					<div class="form__header"></div>
-					<div class="form__body"></div>
-					<div class="form__footer"></div>
+				<div class="half todo-form-wrapper">
+					<div class="todo-form">
+						<div class="todo-form__header">
+							<h3 class="todo-form__caption">Карточка задания</h3>
+						</div>
+						<div class="todo-form__body">
+							<label for="todo-desc" class="label todo-form__label"
+								>Задача</label
+							>
+							<input
+								id="todo-desc"
+								type="text"
+								placeholder="Описание задачи"
+								autocomplete="off"
+								class="input todo-form__input"
+							/>
+							<div class="todo-form__priority">
+								<input
+									id="todo-priority"
+									type="checkbox"
+									class="chx todo-form__chx todo-form__chx--priority"
+								/>
+								<label for="todo-priority">Высокий приоритет</label>
+								<img src="./assets/icons/priority-icon.png" />
+							</div>
+						</div>
+						<div class="todo-form__footer">
+							<button class="btn todo-form__btn todo-form__btn--save">
+								Сохранить
+							</button>
+							<button class="btn todo-form__btn todo-form__btn--cancel">
+								Отменить
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</body>
+
+	<script src="./js/index.js" type="module"></script>
 </html>

@@ -44,7 +44,19 @@ body {
 	cursor: pointer;
 }
 
-.active {
-	visibility: visible;
-	opacity: 1;
+.label {
+	display: block;
+}
+
+.input {
+	width: 100%;
+}
+
+.display {
+	display: block !important;
+}
+
+.visible {
+	visibility: visible !important;
+	opacity: 1 !important;
 }
