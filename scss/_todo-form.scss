@@ -4,40 +4,54 @@
 	box-shadow: rgba(0, 0, 0, 0.2) 0 0 5px 1px;
 	background: #fff;
 	border-radius: 15px;
-
 	visibility: hidden;
 	opacity: 0;
 
 	&__header {
-		margin-bottom: 7px;
+		margin-bottom: 10px;
 	}
 
 	&__body {
 		margin-bottom: 15px;
 	}
 
-	&__priority {
+	&__high-priority {
 		display: flex;
 		align-items: center;
-		margin-top: 18px;
+		margin-top: 15px;
 
 		label {
-			margin-right: 5px;
+			position: relative;
+			padding-right: 25px;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				right: 0;
+				transform: translate(0, -50%);
+				width: 20px;
+				height: 20px;
+
+				background: center / cover no-repeat
+					url("../assets/icons/priority-icon.png");
+
+				content: "";
+			}
 		}
 	}
 
-	&__caption {
-		margin: 0;
-		color: #000;
-		font-weight: 400;
-		font-size: 18px;
-	}
-
 	&__label {
+		display: block;
 		margin-bottom: 10px;
 	}
 
+	&__caption {
+		color: #000;
+		font-size: 18px;
+	}
+
 	&__input {
+		width: 100%;
 		padding: 5px 4px;
 	}
 

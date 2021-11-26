@@ -1,43 +1,78 @@
-import TodoStore from "./modules/TodoStore.js";
+let form;
+let taskListContainer;
+let taskList;
+let editableTask = null;
 
-const todoListElem = document.querySelector(".todoList");
-const todoListContainer = document.createElement("ul");
-todoListContainer.classList.add("list");
-todoListElem.append(todoListContainer);
+document.addEventListener("DOMContentLoaded", () => {
+	form = document.forms.todoForm;
+	taskListContainer = document.querySelector(".todo-list");
+	taskList = taskListContainer.querySelector(".task-list");
 
-const todoStore = new TodoStore(todoListContainer);
-const todoForm = document.querySelector(".todo-form");
-const saveBtn = document.querySelector(".todo-form__btn--save");
-const cancelBtn = document.querySelector(".todo-form__btn--cancel");
-const addBtn = document.querySelector(".todoList__btn--add");
-
-addBtn.addEventListener("click", () => {
-	todoForm.classList.add("visible");
+	template = taskList.firstElementChild.cloneNode(true);
+	taskList.firstElementChild.remove();
 });
 
-saveBtn.addEventListener("click", () => {
-	const input = document.querySelector(".todo-form__input");
+const getTodoDone = (chx) => {
+	const todo = chx.closest(".task");
+	const editBtn = todo.querySelector(".task__btn--edit");
 
-	const inputValue = input.value;
+	editBtn.setAttribute("disabled", "true");
+	todo.classList.toggle("done");
+};
 
-	if (inputValue === "") {
-		alert("Введите описание задачи");
+const deleteTodo = (btn) => {
+	const todo = btn.closest(".task");
+
+	todo.remove();
+};
+
+const editTodo = (btn) => {
+	const todo = btn.closest(".task");
+
+	form.classList.add("visible");
+	form.elements.todoTitle.value = todo.querySelector(".task__title").innerText;
+	form.elements.highPriority.checked = todo
+		.querySelector(".task__high-priority")
+		.classList.contains("display");
+
+	editableTask = todo;
+};
+
+const openForm = (btn) => {
+	form.classList.add("visible");
+};
+
+const applySave = (btn) => {
+	if (form.elements.todoTitle.value === "") {
+		alert("Введите описание для задания");
 		return;
 	}
 
-	const chx = document.querySelector(".todo-form__chx--priority");
-	const priority = chx.checked;
+	const currentElem = editableTask ? editableTask : template.cloneNode(true);
 
-	todoStore.addTodo(inputValue, priority);
-	input.value = "";
-	todoForm.classList.remove("visible");
-});
+	currentElem.querySelector(".task__title").innerText =
+		form.elements.todoTitle.value;
 
-cancelBtn.addEventListener("click", () => {
-	const input = document.querySelector(".todo-form__input");
-	const chx = document.querySelector(".todo-form__chx--priority");
+	if (form.elements.highPriority.checked) {
+		currentElem.querySelector(".task__high-priority").classList.add("display");
+	} else {
+		currentElem
+			.querySelector(".task__high-priority")
+			.classList.remove("display");
+	}
 
-	todoForm.classList.remove("visible");
-	chx.checked = false;
-	input.value = "";
-});
+	if (!editableTask) taskList.append(currentElem);
+
+	cleanForm();
+};
+
+const cancelSave = (btn) => {
+	cleanForm();
+};
+
+const cleanForm = () => {
+	form.elements.todoTitle.value = "";
+	form.elements.highPriority.checked = false;
+	form.classList.remove("visible");
+	editableTask = null;
+};
