@@ -15,42 +15,89 @@
 	<body>
 		<div class="page">
 			<div class="container">
-				<div class="todoList half">
-					<div class="todoList__header">
-						<h2 class="todoList__caption">Список задач</h2>
-						<button class="btn todoList__btn">Добавить</button>
+				<div class="half todo-list">
+					<div class="todo-list__header">
+						<div class="todo-list__caption">Список задач</div>
+						<button class="btn todo-list__btn" onclick="openForm(this)">
+							Добавить
+						</button>
 					</div>
 
-					<div class="todoList__body">
-						<ul class="list">
-							<li class="list__item todo">
-								<div class="box">
-									<input class="chx todo__chx box__item" type="checkbox" />
-									<img
-										class="todo__priority box__item"
-										src="./assets/icons/priority-icon.png"
-									/>
-									<span class="todo__title box__item">Задача 1</span>
-								</div>
-								<div class="box">
-									<button class="btn todo__btn box__item">
-										<img src="./assets/icons/edit-icon.png" />
-									</button>
-									<button class="btn todo__btn box__item">
-										<img src="./assets/icons/delete-icon.png" />
-									</button>
+					<div class="todo-list__body">
+						<ul class="task-list">
+							<li class="task-list__item task">
+								<input
+									type="checkbox"
+									class="chx task__chx"
+									onchange="getTodoDone(this)"
+								/>
+								<span class="task__high-priority display"></span>
+								<span class="task__title">Задача 1</span>
+								<div class="task__actions">
+									<button
+										class="btn task__btn task__btn--edit"
+										onclick="editTodo(this)"
+									></button>
+									<button
+										class="btn task__btn task__btn--delete"
+										onclick="deleteTodo(this)"
+									></button>
 								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
 
-				<div class="half form-wrapper">
-					<div class="form__header"></div>
-					<div class="form__body"></div>
-					<div class="form__footer"></div>
+				<div class="half todo-form-wrapper">
+					<form class="todo-form" name="todoForm">
+						<div class="todo-form__header">
+							<div class="todo-form__caption">Карточка задания</div>
+						</div>
+
+						<div class="todo-form__body">
+							<label for="todo-title-input" class="todo-form__label"
+								>Задача</label
+							>
+							<input
+								id="todo-title-input"
+								name="todoTitle"
+								type="text"
+								placeholder="Описание задачи"
+								autocomplete="off"
+								class="todo-form__input"
+							/>
+							<div class="todo-form__high-priority">
+								<input
+									id="high-priority-chx"
+									name="highPriority"
+									type="checkbox"
+									class="chx todo-form__chx"
+								/>
+								<label for="high-priority-chx">Высокий приоритет</label>
+							</div>
+						</div>
+
+						<div class="todo-form__footer">
+							<button
+								type="button"
+								class="btn todo-form__btn todo-form__btn--save"
+								onclick="applySave(this)"
+							>
+								Сохранить
+							</button>
+							<button
+								type="button"
+								class="btn todo-form__btn todo-form__btn--cancel"
+								onclick="cancelSave(this)"
+							>
+								Отменить
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
+
+		<script src="./js/index.js"></script>
 	</body>
 </html>

@@ -1,0 +1,36 @@
+.todo-list {
+	box-shadow: rgba(0, 0, 0, 0.2) 0 0 5px 1px;
+	background: #fff;
+
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 30px;
+		padding: 0 15px;
+	}
+
+	&__caption {
+		font-size: 24px;
+		font-weight: 700;
+	}
+
+	&__btn {
+		position: relative;
+		display: flex;
+		align-items: center;
+		padding-left: 25px;
+
+		&::before {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translate(0, -50%);
+			width: 17px;
+			height: 17px;
+			background: center / cover no-repeat
+				url("../assets/icons/add-todo-icon.png");
+			content: "";
+		}
+	}
+}
